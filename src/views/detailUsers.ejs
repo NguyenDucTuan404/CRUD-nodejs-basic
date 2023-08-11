@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <title>Document</title>
+</head>
+
+<body>
+  <div class="list-users">
+    <div class="w3-container">
+      <h1>User Detail</h1>
+      <table class="w3-table-all w3-hoverable">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>FirstName</th>
+            <th>LastName</th>
+            <th>Email</th>
+            <th>Address</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% for(let i=0; i < dataUser.length; i++) { %>
+            <tr>
+              <td>
+                <%= dataUser[i].id %>
+              </td>
+              <td>
+                <%= dataUser[i].firstName %>
+              </td>
+              <td>
+                <%= dataUser[i].lastName %>
+              </td>
+              <td>
+                <%= dataUser[i].email %>
+              </td>
+              <td>
+                <%= dataUser[i].address %>
+              </td>
+            </tr>
+            <% } %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</body>
+
+</html>
