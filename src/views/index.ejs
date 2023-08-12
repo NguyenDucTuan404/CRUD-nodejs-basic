@@ -53,7 +53,7 @@
   </div>
   <div class="create-user-container">
     <h2>Create a new user:</h2>
-    <form action="" class="form">
+    <form action="/create-new-user" method="post" class="form">
       <div class="form__row">
         <label class="form-label" for="firstName">FirstName: </label>
         <input class="form-input" type="text" name="firstName" id="firstName" placeholder="Vui lòng nhập tên...">
@@ -70,10 +70,11 @@
         <label class="form-label" for="address">Address: </label>
         <input class="form-input" type="text" name="address" id="address" placeholder="Vui lòng nhập địa chỉ...">
       </div>
+      <div class="form-button">
+        <button type="submit">Submit</button>
+      </div>
     </form>
-    <div class="form-button">
-      <button type="submit">Submit</button>
-    </div>
+
   </div>
 
 </body>

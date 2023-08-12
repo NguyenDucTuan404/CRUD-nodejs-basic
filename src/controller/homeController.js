@@ -20,8 +20,6 @@ const getDetailPage = async (req, res) => {
     const [rows, fields] = await connection.execute('SELECT * FROM `users` WHERE `id` = ?', [id || null]);
     await connection.end();
 
-    console.log(rows);
-
     res.render('detailUsers.ejs', { dataUser: rows });
   } catch (error) {
     console.error('Error:', error);
@@ -29,8 +27,22 @@ const getDetailPage = async (req, res) => {
   }
 };
 
+const createNewUser = async (req, res) => {
+  try {
+    const { firstName, lastName, email, address } = req.body;
+    const connection = await mysql.createConnection({ host: 'localhost', user: 'root', database: 'nodejsbasic' });
+    await connection.execute('INSERT INTO `users`(`firstName`, `lastName`, `email`, `address`) VALUES (?, ?, ?, ?)', [firstName, lastName, email, address]);
+    await connection.end();
+
+    return res.redirect('/');
+  } catch (error) {
+    console.error('Error:', error);
+    res.status(500).send('Internal Server Error ' + error.message);
+  }
+};
+
 
 
 module.exports = {
-  getHomePage, getDetailPage
+  getHomePage, getDetailPage, createNewUser
 };
