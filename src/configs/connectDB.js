@@ -1,24 +1,12 @@
-import mysql from "mysql2";
+import mysql from "mysql2/promise";
 
-// Tạo một kết nối đến cơ sở dữ liệu
-const connection = mysql.createConnection({
-  host: "localhost", // Thay đổi tên host nếu cần
-  user: "root", // Thay đổi tên người dùng
-  // password: "password", // Thay đổi mật khẩu
-  database: "nodejsbasic" // Thay đổi tên cơ sở dữ liệu
-});
+console.log("Creating connection pool... ");
 
-connection.connect((err) => {
-  if (err) {
-    console.error("Lỗi kết nối: " + err.stack);
-    return;
-  }
-  console.log("Kết nối thành công với ID " + connection.threadId);
+const pool = mysql.createPool({
+  host: "localhost",
+  user: "root",
+  database: "nodejsbasic",
+  // password: "password"
+})
 
-  // Thực hiện các truy vấn, thêm, sửa, xóa dữ liệu ở đây
-});
-
-// Đóng kết nối sau khi hoàn tất công việc
-connection.end();
-
-export default connection;
+export default pool;
